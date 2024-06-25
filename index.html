@@ -102,6 +102,27 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
+        .share-buttons {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .share-buttons a {
+      margin: 0 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+
+    .share-buttons a:hover {
+      background-color: #f2f2f2;
+    }
     </style>
 </head>
 
@@ -119,6 +140,25 @@
         <div id="loading" class="loading-spinner" style="display: none;"></div>
         <button onclick="resetForm()" style="margin-top: 20px;">Cek Lagi</button>
     </div>
+
+
+    <div class="share-buttons">
+    <a href="https://www.facebook.com/sharer/sharer.php?u=<?= urlencode($_SERVER['REQUEST_URI']) ?>" target="_blank">
+      <i class="fab fa-facebook-f"></i> Facebook
+    </a>
+    <a href="https://twitter.com/intent/tweet?text=<?= urlencode(htmlspecialchars($_SERVER['REQUEST_URI'])) ?>" target="_blank">
+      <i class="fab fa-twitter"></i> Twitter
+    </a>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?= urlencode($_SERVER['REQUEST_URI']) ?>" target="_blank">
+      <i class="fab fa-linkedin-in"></i> LinkedIn
+    </a>
+    <a href="whatsapp://send?text=<?= urlencode($_SERVER['REQUEST_URI']) ?>" data-action="share/whatsapp/share">
+      <i class="fab fa-whatsapp"></i> WhatsApp
+    </a>
+  </div>
+
+
+    
     <div class="footer">
         © 2024 <a target="_blank">Qcoa Pink</a>
     </div>
