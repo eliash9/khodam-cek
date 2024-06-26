@@ -125,10 +125,11 @@
       background-color: #f2f2f2;
     }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 
 <body>
-    <div class="card">
+    <div class="card" id="capture">
         <h1>Cek Khodam</h1>
         
         <input type="text" id="nameInput" placeholder="Ketik nama kamu di sini">
@@ -140,6 +141,7 @@
         <button onclick="cekKhodam()">Cek Khodam</button>
         <div id="loading" class="loading-spinner" style="display: none;"></div>
         <button onclick="resetForm()" style="margin-top: 20px;">Cek Lagi</button>
+        <button id="save">Save as Image</button>
     </div>
 
     <div><p id="kunjungan"></p></div>
@@ -527,6 +529,17 @@
             
             // Tampilkan jumlah kunjungan
             document.getElementById("kunjungan").textContent = "Kunjungan: " + kunjungan;
+
+
+        document.getElementById('save').addEventListener('click', function() {
+      html2canvas(document.querySelector("#capture")).then(canvas => {
+        // Create an anchor element to trigger the download
+        let link = document.createElement('a');
+        link.download = 'capture.png';
+        link.href = canvas.toDataURL();
+        link.click();
+      });
+    });
     </script>
 </body>
 
