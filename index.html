@@ -142,7 +142,7 @@
         <button onclick="resetForm()" style="margin-top: 20px;">Cek Lagi</button>
     </div>
 
-
+    <div id="kunjungan"></div>
     <div class="share-buttons">
     <a href="https://www.facebook.com/sharer/sharer.php?u=https://khodam-cek-two.vercel.app/" target="_blank">
       <i class="fab fa-facebook-f"></i> Facebook
@@ -508,6 +508,25 @@
             document.getElementById('nameInput').value = '';
             document.getElementById('result').style.display = 'none';
         }
+
+        let kunjungan = 0;
+            
+            // Periksa apakah ada data kunjungan yang tersimpan di penyimpanan lokal
+            if (localStorage.getItem("kunjungan")) {
+              kunjungan = parseInt(localStorage.getItem("kunjungan"));
+            } else {
+              // Jika tidak ada, set kunjungan awal ke 1
+              kunjungan = 1;
+            }
+            
+            // Tambah kunjungan
+            kunjungan++;
+            
+            // Simpan kunjungan ke penyimpanan lokal
+            localStorage.setItem("kunjungan", kunjungan);
+            
+            // Tampilkan jumlah kunjungan
+            document.getElementById("kunjungan").textContent = "Kunjungan: " + kunjungan;
     </script>
 </body>
 
